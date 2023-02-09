@@ -27,11 +27,11 @@ Route::controller(AuthController::class)->group(function () {
 
 
 Route::middleware('auth:api')->group(function(){
-    Route::controller(ProductController::class)->group(function(){
-        Route::get('/list',[ProductController::class,'list']);
-        Route::post('/create',[ProductController::class,'store']);
-        Route::post('/update',[ProductController::class,'update']);
-        Route::post('/delete',[ProductController::class,'delete']);
+    Route::controller(ProductController::class)->prefix('products')->group(function(){
+        Route::get('/list','list');
+        Route::post('/create','store');
+        Route::post('/update','update');
+        Route::post('/delete','delete');
     });
 });
     
